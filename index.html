@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de las Flores Amarillas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #0f4f99, #697a0a);
+            color: #333;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        header,
+        .flowers,
+        .message,
+        footer {
+            position: relative;
+            z-index: 2;
+        }
+
+        header {
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #d4a017;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .flowers {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        /* FLOR MÁS REAL */
+        .flower {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+
+        .petal {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: radial-gradient(circle, #fff176, #fbc02d);
+            border-radius: 50%;
+            top: 30px;
+            left: 40px;
+            transform-origin: center bottom;
+        }
+
+
+        .center {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: #8d6e00;
+            border-radius: 50%;
+            top: 68px;
+            left: 40px;
+            z-index: 2;
+        }
+
+        .stem {
+            position: absolute;
+            width: 10px;
+            height: 60px;
+            background: green;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 10px;
+        }
+
+        .message {
+            margin: 40px 20px;
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #b8860b;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background: #c4a82e;
+            font-size: 0.9em;
+        }
+
+        .heart {
+            font-size: 1.5em;
+            animation: latido 2s infinite;
+        }
+
+        @keyframes latido {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        /* FLORES CAYENDO (PÉTALOS) */
+        .falling-flower {
+            position: fixed;
+            top: -50px;
+            width: 20px;
+            height: 30px;
+            background: radial-gradient(circle, #fff176, #fbc02d);
+            border-radius: 50%;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        p{
+            color: #b8860b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1> Miraaaa unas flores amarillas </h1>
+        <p>yoseee mira lo que hice, para ti polque me caes bien tqm</p>
+    </header>
+
+    <section class="flowers">
+
+        <div class="flower">
+            <div class="petal" style="transform: rotate(0deg);"></div>
+            <div class="petal" style="transform: rotate(60deg);"></div>
+            <div class="petal" style="transform: rotate(120deg);"></div>
+            <div class="petal" style="transform: rotate(180deg);"></div>
+            <div class="petal" style="transform: rotate(240deg);"></div>
+            <div class="petal" style="transform: rotate(300deg);"></div>
+            <div class="center"></div>
+            <div class="stem"></div>
+        </div>
+
+        <div class="flower">
+            <div class="petal" style="transform: rotate(0deg);"></div>
+            <div class="petal" style="transform: rotate(60deg);"></div>
+            <div class="petal" style="transform: rotate(120deg);"></div>
+            <div class="petal" style="transform: rotate(180deg);"></div>
+            <div class="petal" style="transform: rotate(240deg);"></div>
+            <div class="petal" style="transform: rotate(300deg);"></div>
+            <div class="center"></div>
+            <div class="stem"></div>
+        </div>
+
+
+
+        <div class="flower">
+            <div class="petal" style="transform: rotate(0deg);"></div>
+            <div class="petal" style="transform: rotate(60deg);"></div>
+            <div class="petal" style="transform: rotate(120deg);"></div>
+            <div class="petal" style="transform: rotate(180deg);"></div>
+            <div class="petal" style="transform: rotate(240deg);"></div>
+            <div class="petal" style="transform: rotate(300deg);"></div>
+            <div class="center"></div>
+            <div class="stem"></div>
+        </div>
+
+    </section>
+
+    <div class="message">
+        Hoy te regalo estas flores amarillas pa que veas que noseee pero mira para ti:(parezco tonto dando flores de
+        esta forma)
+    </div>
+
+    <footer>
+        Hecho con <span class="heart">❤</span> para ti
+    </footer>
+
+    <script>
+        function crearFlor() {
+            const flor = document.createElement('div');
+            flor.classList.add('falling-flower');
+
+            flor.style.left = Math.random() * window.innerWidth + 'px';
+            flor.style.animationDuration = (3 + Math.random() * 5) + 's';
+            flor.style.opacity = Math.random();
+
+            document.body.appendChild(flor);
+
+            setTimeout(() => {
+                flor.remove();
+            }, 8000);
+        }
+
+        setInterval(crearFlor, 300);
+    </script>
+
+</body>
+
+</html>
